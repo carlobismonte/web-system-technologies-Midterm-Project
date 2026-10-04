@@ -14,8 +14,13 @@ class UserModel extends Model
         'full_name',
         'email',
         'avatar',
-        'created_at'
+        
     ];
+
+    protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = '';
+
     protected $validationRules = [
         'username'  => 'required|min_length[3]|max_length[30]|is_unique[users.username]',
         'full_name' => 'required|min_length[3]|max_length[100]',
