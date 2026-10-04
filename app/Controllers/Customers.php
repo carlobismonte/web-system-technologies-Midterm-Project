@@ -73,4 +73,33 @@ class Customers extends BaseController
 
         return redirect()->to('/customers');
     }
+     
+    public function delete($id)
+{
+    $model = new \App\Models\CustomerModel();
+
+    $customer = $model->find($id);
+
+    if (! $customer) {
+        return redirect()->to('/customers')
+            ->with('error', 'Customer not found.');
+    }
+
+    // Check whether this customer has sales history
+    $db = \Config\Database::connect();
+
+    $hasSales = $db->table('sales')
+        ->where('customer_id', $id)
+        ->countAllResults();
+
+    if ($hasSales > 0) {
+        return redirect()->to('/customers')
+            ->with('error', 'This customer cannot be deleted because they have sales history.');
+    }
+
+    $model->delete($id);
+
+    return redirect()->to('/customers')
+        ->with('success', 'Customer deleted successfully.');
+}
 }

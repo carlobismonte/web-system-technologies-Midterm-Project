@@ -26,5 +26,6 @@ class UserModel extends Model
         'username'  => 'required|min_length[3]|max_length[30]|is_unique[users.username]',
         'full_name' => 'required|min_length[3]|max_length[100]',
         'email'     => 'required|valid_email|max_length[254]|is_unique[users.email]',
+        'password'  => 'required|min_length[6]|max_length[255]',
     ];
 }

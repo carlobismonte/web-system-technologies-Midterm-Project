@@ -16,7 +16,7 @@
 
 <br>
 
-<a href="/">Today</a> |
+<a href="/">Home</a> |
 <a href="/tasks">Tasks</a> |
 <a href="/profile">Profile</a>
 

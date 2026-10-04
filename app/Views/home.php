@@ -1,41 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasks for Today</title>
+    <title>Point-of-Sale System</title>
 </head>
 <body>
 
-<h1>Tasks for Today</h1>
+<h1>Point-of-Sale System</h1>
 
 <p>Today's Date: <?= date('Y-m-d') ?></p>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>ID</th>
-        <th>Task</th>
-        <th>Status</th>
-        <th>Date</th>
-    </tr>
+<h2>POS Navigation</h2>
 
-    <?php foreach ($tasks as $task): ?>
-        <tr>
-            <td><?= esc($task['id']) ?></td>
-            <td><?= esc($task['title']) ?></td>
-            <td><?= esc($task['status']) ?></td>
-            <td><?= esc($task['task_date']) ?></td>
-        </tr>
-    <?php endforeach; ?>
+<p>
+    <a href="<?= base_url('/products') ?>">Products</a> |
+    <a href="<?= base_url('/customers') ?>">Customer Accounts</a> |
+    <a href="<?= base_url('/users') ?>">User Accounts</a> |
+    <a href="<?= base_url('/sales/new') ?>">Record Sale</a> |
+    <a href="<?= base_url('/sales') ?>">Sales History</a>
+</p>
 
-</table>
+<hr>
 
-<br>
+<p>
+    Logged in as:
+    <strong><?= esc(session()->get('username')) ?></strong>
+</p>
 
-<a href="/tasks">View All Tasks</a> |
-<a href="/profile">Profile</a> |
-<a href="/about">About</a> |
-<a href="/customers">Customer Accounts</a> |
-<a href="/users">User Accounts</a>
+<a href="<?= base_url('/about') ?>">About</a> |
+<a href="<?= base_url('/logout') ?>">Logout</a>
 
 </body>
 </html>

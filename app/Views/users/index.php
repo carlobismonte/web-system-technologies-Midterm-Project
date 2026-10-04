@@ -15,6 +15,17 @@
     </nav>
 
     <h1>User Accounts</h1>
+    <?php if (session()->getFlashdata('success')): ?>
+    <p style="color: green;">
+        <?= esc(session()->getFlashdata('success')) ?>
+    </p>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <p style="color: red;">
+        <?= esc(session()->getFlashdata('error')) ?>
+    </p>
+<?php endif; ?>
 
     <a href="/users/new">Add New User</a>
 
@@ -27,7 +38,7 @@
             <th>Username</th>
             <th>Full Name</th>
             <th>Created At</th>
-            <th>Action</th>
+            <th colspan="2">Action</th>
         </tr>
 
         <?php foreach ($users as $user): ?>
@@ -57,8 +68,17 @@
                 <td><?= esc($user['created_at']) ?></td>
 
                 <td>
-                    <a href="/users/edit/<?= esc($user['id']) ?>">Edit</a>
-                </td>
+    <a href="<?= base_url('/users/edit/' . $user['id']) ?>">
+        Edit
+    </a>
+</td>
+
+<td>
+    <a href="<?= base_url('/users/delete/' . $user['id']) ?>"
+       onclick="return confirm('Are you sure you want to delete this user?')">
+        Delete
+    </a>
+</td>
             </tr>
         <?php endforeach; ?>
 

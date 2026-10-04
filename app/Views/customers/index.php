@@ -25,7 +25,7 @@
             <th>Email</th>
             <th>Phone</th>
             <th>created_at</th>
-            <th>Action</th>
+            <th colspan="2">Action</th>
         </tr>
 
         <?php foreach ($customers as $customer): ?>
@@ -36,6 +36,11 @@
                 <td><?= esc($customer['phone']) ?></td>
                 <td><?= esc($customer['created_at']) ?></td>
                 <td><a href="/customers/edit/<?= esc($customer['id']) ?>">Edit</a></td>
+                <td><a href="<?= base_url('/customers/delete/' . $customer['id']) ?>"
+                   onclick="return confirm('Are you sure you want to delete this customer?')">
+                    Delete
+                </a></td>
+                
             </tr>
         <?php endforeach; ?>
     </table>

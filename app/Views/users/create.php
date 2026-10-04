@@ -1,45 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add User</title>
+    <title>Add New User</title>
 </head>
 <body>
 
-<h1>Add User</h1>
+<h1>Add New User</h1>
 
 <?php if (!empty($errors)): ?>
-    <ul>
-        <?php foreach ($errors as $error): ?>
-            <li><?= esc($error) ?></li>
-        <?php endforeach; ?>
-    </ul>
+    <div style="color: red;">
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?= esc($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 <?php endif; ?>
 
-<form action="/users/store" method="post">
+<form
+    action="<?= base_url('/users/store') ?>"
+    method="post"
+    enctype="multipart/form-data"
+>
 
-    <label>Username:</label>
+    <?= csrf_field() ?>
+
+    <label for="username">Username:</label>
     <input
         type="text"
         name="username"
-        value="<?= old('username', $data['username'] ?? '') ?>"
+        id="username"
+        value="<?= esc(old('username', $data['username'] ?? '')) ?>"
+        required
     >
+
     <br><br>
 
-    <label>Full Name:</label>
+    <label for="full_name">Full Name:</label>
     <input
         type="text"
         name="full_name"
-        value="<?= old('full_name', $data['full_name'] ?? '') ?>"
+        id="full_name"
+        value="<?= esc(old('full_name', $data['full_name'] ?? '')) ?>"
+        required
     >
+
     <br><br>
 
-    <label>Email:</label>
+    <label for="email">Email:</label>
     <input
         type="email"
         name="email"
-        value="<?= old('email', $data['email'] ?? '') ?>"
+        id="email"
+        value="<?= esc(old('email', $data['email'] ?? '')) ?>"
+        required
     >
+
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input
+        type="password"
+        name="password"
+        id="password"
+        required
+    >
+
+    <br><br>
+
+    <label for="avatar">Avatar:</label>
+    <input
+        type="file"
+        name="avatar"
+        id="avatar"
+        accept="image/jpeg,image/png"
+    >
+
     <br><br>
 
     <button type="submit">Add User</button>
@@ -48,7 +85,7 @@
 
 <br>
 
-<a href="/users">Back to Users</a>
+<a href="<?= base_url('/users') ?>">Back to Users</a>
 
 </body>
 </html>

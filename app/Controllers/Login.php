@@ -36,7 +36,7 @@ class Login extends BaseController
             'logged_in' => true
         ]);
 
-        return redirect()->to('/users');
+        return redirect()->to('/');
     }
 
     public function logout()
