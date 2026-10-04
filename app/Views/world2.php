@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p> Welcom to codeigniter4!.</p>
+</body>
+</html>
