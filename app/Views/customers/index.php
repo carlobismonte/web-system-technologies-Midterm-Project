@@ -13,6 +13,10 @@
     </nav>
 
     <h1>Customer Accounts</h1>
+    
+    <a href="/customers/new">Add New Customer</a>
+
+    <br><br>
 
     <table border="1" cellpadding="10">
         <tr>
