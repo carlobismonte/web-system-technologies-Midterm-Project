@@ -1,69 +1,132 @@
-# CodeIgniter 4 Application Starter
+# CodeIgniter Point-of-Sale System
 
-## What is CodeIgniter?
+## Project Description
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+This project is a Point-of-Sale (POS) system developed using CodeIgniter 4 and MySQL.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+The system provides:
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- Product management
+- Customer management
+- Staff/User management
+- User authentication
+- Product image upload
+- Staff avatar upload
+- Record Sale
+- Stock management
+- Sales History
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Features
 
-## Installation & updates
+### Product Management
+Users can:
+- View products
+- Add products
+- Edit products
+- Delete products
+- Upload and display product images
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Customer Management
+Users can:
+- View customers
+- Add customers
+- Edit customers
+- Delete customers
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### Staff/User Management
+Users can:
+- View staff accounts
+- Add staff accounts
+- Edit staff accounts
+- Delete staff accounts
+- Upload and display avatars
+- Store passwords using password hashing
 
-## Setup
+### Authentication
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+The system includes:
+- Login
+- Logout
+- Session management
+- Protected management pages
 
-## Important Change with index.php
+### Sales
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+A logged-in staff member can:
+- Select a product
+- Select an optional customer
+- Enter a quantity
+- Record a sale
+- Automatically calculate the total price
+- Automatically decrease product stock
+- Prevent sales that exceed available stock
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Sales History
 
-**Please** read the user guide for a better explanation of how CI4 works!
+The system displays:
+- Product
+- Customer
+- Staff member
+- Quantity
+- Total price
+- Sale date
 
-## Repository Management
+## Requirements
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- PHP
+- XAMPP
+- MySQL
+- CodeIgniter 4
+- Composer
+- Web browser
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Installation
 
-## Server Requirements
+1. Copy the project into the XAMPP `htdocs` folder.
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+2. Start Apache and MySQL using XAMPP.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+3. Create a MySQL database named:
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+   `tasks_db`
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+4. Import the included:
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+   `tasks_db.sql`
+
+   file into phpMyAdmin.
+
+5. Configure the database connection in the local `.env` file.
+
+6. Open a terminal in the project folder.
+
+7. Run:
+
+   `php spark serve`
+
+8. Open the application in a browser:
+
+   `http://localhost:8080`
+
+## Database
+
+The project uses the following tables:
+
+- `products`
+- `customers`
+- `users`
+- `sales`
+
+The `sales` table connects products, customers, and staff members.
+
+## Test Account
+
+For local testing, create or use a staff account through the application.
+
+Passwords are stored using password hashing.
+
+## Project Repository
+
+GitHub Repository:
+
+https://github.com/carlobismonte/web-system-technologies-Midterm-Project
